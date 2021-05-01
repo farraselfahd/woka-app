@@ -1,0 +1,75 @@
+body {
+
+    /* background-image: url(assets/HB2.png); */
+    background-color: #e9f0f5;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    color: #000000;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-clr {
+    background-color: white !important;
+}
+
+.slogan {
+    font-weight: 600;
+    font-size: 55px;
+}
+
+.border {
+    border: 5px solid palevioletred;
+}
+
+.search-box {
+    border: none;
+    width: 70%;
+    height: 42px;
+    color: #000000;
+}
+
+.card-body {
+    background: #4E9AA9;
+    opacity: 0.3;
+    border: none;
+}
+
+.find-btn {
+    width: 20%;
+    height: 42px;
+    border: none;
+    background: #4E9AA9;
+    color: #ffffff;
+}
+
+.footer {
+    text-align: center !important;
+    color: #979797;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    background-color: white;
+}
+
+.btn-gabung {
+    background-color: #7784EE;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.headT {
+    text-align: center !important;
+}
+
+/* @media only screen and (max-width: 500px) {
+
+    .da {
+        flex-direction: column-reverse;
+    }
+
+ } */
