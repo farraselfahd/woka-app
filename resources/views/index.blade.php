@@ -31,7 +31,7 @@
 						<a class="nav-link" href="{{ url('/gabung') }}">Gabung Mitra</a>
 					</li>
 					<li class="nav-item pe-5">
-						<a class="nav-link" data-bs-toggle="modal" formaction="#" data-bs-target="#exampleModal1" href="{{ url('/gabung') }}">Masuk</a>
+						<a class="nav-link" data-bs-toggle="modal" formaction="{{ url('/profil') }}" data-bs-target="#exampleModal1" href="">Masuk</a>
 					</li>
 				</ul>
 
@@ -41,27 +41,39 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-body">
-								<form method="post" action="{{ url('/') }}">
+								<form method="post" action="{{ route('login') }}">
 								@csrf
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									<h2 class="headT mb-4">Masuk</h2>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="text" class="form-control" placeholder="Email/Nama Pengguna"/>
+										<!-- <input type="text" class="form-control" placeholder="Email" name="email" /> -->
+										<x-input id="email" class="form-control block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus placeholder="Email"/>
 									</div>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="password" class="form-control" placeholder="Kata Sandi"/>
+										<!-- <input type="password" class="form-control" placeholder="Kata Sandi" name="password" /> -->
+										<x-input id="password" class="form-control block mt-1 w-full"
+										type="password"
+										name="password"
+										required autocomplete="current-password" placeholder="Kata Sandi"/>
 									</div>
 									<div class="form-outline pe-5 ps-5">
-										<button type="submit" class="btn mb-4 btn-gabung">Lanjut</button>
-										<input type="checkbox" name="" id=""> Ingat Saya
-										<a href="#" class="float-end">Lupa Kata Sandi?</a>
+										<!-- <button type="submit" class="btn mb-4 btn-gabung">Lanjut</button> -->
+										<x-button class="ml-3 btn mb-4 btn-gabung">
+											{{ __('Lanjut') }}
+										</x-button>
+										
+										<!-- Remember Me -->
+										<input type="checkbox" name="remember" id="remember_me"> Ingat Saya </input>
+										@if (Route::has('password.request'))
+											<a href="{{ route('password.request') }}" class="float-end">Lupa Kata Sandi?</a>
+										@endif
 									</div>
 								</form>
 							</div>
 
-							<div class="modal-footer mx-auto">
-								<p>Belum Bergabung? <a href="#">Daftar</a></p>
-							</div>
+							<!-- <div class="modal-footer mx-auto">
+								<p>Belum Bergabung? <a class="" data-bs-toggle="modal" formaction="{{ url('/profil') }}" data-bs-target="#exampleModal" href="">Daftar</a></p>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -71,17 +83,33 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-body">
-								<form>
+								<!-- Validation Errors -->
+								<x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+								<form method="post" action="{{ route('register') }}">
+									@csrf
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									<h2 class="headT mb-4">Daftar</h2>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="email" class="form-control" placeholder="Email"/>
+										<!-- <input type="email" class="form-control" placeholder="Email" name="email" /> -->
+										<x-input id="name" class="form-control block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus placeholder="Nama Lengkap"/>
 									</div>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="text" class="form-control" placeholder="Nama Pengguna"/>
+										<!-- <input type="email" class="form-control" placeholder="Email" name="email" /> -->
+										<x-input id="email" class="form-control block mt-1 w-full" type="email" name="email" :value="old('email')" required placeholder="Email"/>
+									</div>
+									<div class="form-outline mb-4 pe-5 ps-5">
+										<!-- <input type="password" class="form-control" placeholder="Kata Sandi" name="password" /> -->
+										<x-input id="password" class=" form-control block mt-1 w-full"
+										type="password"
+										name="password"
+										required autocomplete="new-password" placeholder="Kata Sandi"/>
 									</div>
 									<div class="form-outline mb-2 pe-5 ps-5">
-										<input type="password" class="form-control" placeholder="Kata Sandi"/>
+										<!-- <input type="password" class="form-control" placeholder="Konfirmasi Kata Sandi" name="confirmPassword" /> -->
+										<x-input id="password_confirmation" class="form-control block mt-1 w-full"
+										type="password"
+										name="password_confirmation" required placeholder="Konfirmasi Kata Sandi"/>
 									</div>
 									<div class="form-outline mb-4 pe-5 ps-5">
 										<p class="mb-4" style="font-size: 13px;">8 karakter atau lebih. Kombinasi huruf besar dan kecil dan angka.</p>
@@ -91,9 +119,9 @@
 								</form>
 							</div>
 
-							<div class="modal-footer mx-auto">
-								<p>Sudah Bergabung? <a href="#">Masuk</a></p>
-							</div>
+							<!-- <div class="modal-footer mx-auto">
+								<p>Sudah Bergabung? <a class="" data-bs-toggle="modal" formaction="{{ url('/profil') }}" data-bs-target="#exampleModal1" href="">Masuk</a></p>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -102,15 +130,16 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg col-sm-12">
+			<div class="col-lg col-sm-12 hide">
 				<img src="{{ asset('img/') }}/woka1.png" alt="" width="82%">
 			</div>
 			<div class="col-lg col-sm-12" style="margin-top: 15%;">
 				<div class="card">
 					<div class="card-body">
-						<form action="">
-							<input type="text" class="search-box" placeholder="Temukan Jasa" name="" id="">
-							<button class="find-btn" type="submit">Cari Jasa</button>
+						<form action="{{ url('/search') }}">
+						@csrf
+							<input type="text" class="search-box" placeholder="Temukan Jasa" name="namaJasa" id="namaJasa">
+							<button class="btn btn-primary" type="submit">Cari Jasa</button>
 						</form>
 				  	</div>
 				</div>
@@ -121,7 +150,11 @@
 	</div>
 
 	<div class="footer fixed-bottom">
-		<p>Woka @ 2021, PT. Woka.</p>
+		<p>
+			<img src="{{ asset('img/') }}/logofooter.png" width="25px" alt="">
+			Woka &emsp;&emsp;
+			@ 2021, PT. Woka.
+		</p>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

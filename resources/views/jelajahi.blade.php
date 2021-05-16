@@ -16,7 +16,7 @@
 <body>
 
 	<nav class="navbar navbar-light navbar-clr">
-		<div class="container-fluid ms-5">
+		<div class="container-fluid ms-3">
 			<a class="navbar-brand" style="color: #11BCC7;" href="{{ url('/') }}"> <img src="{{ asset('img/') }}/logo.png" width="20%" alt=""> <b>Woka</b></a>
 		</div>
 	</nav>
@@ -34,20 +34,20 @@
 					Temukan jenis jasa yang anda butuhkan dengan <br> mencari tawaran yang paling sesuai.
 				</p>
 			</div>
-			<div class="col-lg col-sm-12">
+			<div class="col-lg col-sm-12 flex">
 				<img src="{{ asset('img/') }}/cari.PNG" alt="" class="rounded float-end">
 			</div>
 		</div>
 
-		<div class="row top">
-			<div class="col-lg col-sm-12">
+		<div class="row top reverse">
+			<div class="col-lg col-sm-12 flex">
 				<img src="{{ asset('img/') }}/cari.PNG" alt="" class="rounded">
 			</div>
 			<div class="col-lg col-sm-12 flex">
 				<p>
 					<span style="font-size: 30px; font-weight: bold;">2. Pesan</span>
 					<br>
-					Setelah menemukan jasa yang sesuai, <br> anda bisa langsung memilih rincian jasa, <br> atau bernegosiasi dengan penyedia jasa.				</p>
+					Setelah menemukan jasa yang sesuai, anda bisa langsung memilih rincian jasa atau bernegosiasi dengan penyedia jasa.
 				</p>
 			</div>
 		</div>
@@ -57,26 +57,32 @@
 				<p>
 					<span style="font-size: 30px; font-weight: bold;">3. Selesai</span>
 					<br>
-					Checkout dan tunggu konfirmai dari penyedia jasa. Setelah diproses jasa yang anda butuhkan akan segera dikerjakan.	
+					Checkout dan tunggu konfirmasi dari penyedia jasa. Setelah diproses jasa yang anda butuhkan akan segera dikerjakan.
 				</p>
 			</div>
-			<div class="col-lg col-sm-12">
+			<div class="col-lg col-sm-12 flex">
 				<img src="{{ asset('img/') }}/cari.PNG" alt="" class="rounded float-end">
 			</div>
 		</div>
 
-		<div class="row top bottom">
+		<div class="row mt-5">
 			<div class="card-clr">
 				<h3>
 					Sudah Siap Memesan?
 					<br>
-					<button type="button" class="btn btn-outline-dark mt-4">Pesan Sekarang</button>
+					<form>
+						<button type="submit" formaction="{{ url('/search') }}" class="btn btn-outline-dark mt-4">Pesan Sekarang</button>
+					</form>
 				</h3>
 			</div>
 		</div>
 
 		<div class="footer">
-			<p>Woka @ 2021, PT. Woka.</p>
+		<p>
+			<img src="{{ asset('img/') }}/logofooter.png" width="25px" alt="">
+			Woka &emsp;&emsp;
+			@ 2021, PT. Woka.
+		</p>
 		</div>
 	</div>
 
