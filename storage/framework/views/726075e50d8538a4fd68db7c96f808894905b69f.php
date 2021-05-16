@@ -1,5 +1,28 @@
 
 
+<?php $__env->startSection('progress'); ?>
+<div class="row bar flex">
+		<div class="col-lg col-sm-12 flex" style="color: #0d6efd">
+			<b>1. </b>
+			&nbsp;Informasi Pribadi
+		</div>
+		<div class="col-lg-1 col-sm-1 flex">
+			<b><i class="bi bi-chevron-double-right"></i></b>
+		</div>
+		<div class="col-lg col-sm-12 flex" style="color: #0d6efd">
+			<b>2.</b>
+			&nbsp;Informasi Keahlian
+		</div>
+		<div class="col-lg-1 col-sm-1 flex" style="color: grey">
+			<b><i class="bi bi-chevron-double-right"></i></b>
+		</div>
+		<div class="col-lg col-sm-12 flex">
+			<b>3. </b>
+			&nbsp;Keamanan
+		</div>
+</div>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('container'); ?>
 <h3> <b> <?php echo e($header); ?> </b> </h3>
 <p>Perlihatkan keahlian anda kepada calon pelanggan, <br>
@@ -7,7 +30,7 @@
 		</div>
 
 	<div class="row mt-4 bottom form-set">
-		<form method="post" action="<?php echo e(url('/gabung/3')); ?>">
+		<form method="post" action="/gabung/craftsmanship">
         <?php echo csrf_field(); ?>
 			<div class="row mt-4">
 				<div class="col-lg-4 col-sm-12">
@@ -49,4 +72,4 @@
 	</div>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layout/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\woka-app - Copy\resources\views/gabung/2.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\woka-app - Copy\resources\views/gabung/craftsmanship.blade.php ENDPATH**/ ?>

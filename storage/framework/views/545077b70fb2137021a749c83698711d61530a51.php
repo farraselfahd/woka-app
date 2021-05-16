@@ -7,6 +7,7 @@
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="<?php echo e(asset('css/')); ?>/gabungmitra.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -17,23 +18,23 @@
 <body>
 
 <nav class="navbar navbar-light navbar-clr">
-	<div class="container-fluid ms-5">
-		<a class="navbar-brand" style="color: #11BCC7;" href="/"> <img src="<?php echo e(asset('img/')); ?>/logo.png" width="20%" alt=""> <b>Woka</b></a>
-	</div>
-</nav>
-<div class="bar">
-	<p style="text-align: center;">....</p>
-</div>
-
+		<div class="container-fluid ms-5">
+			<a class="navbar-brand" style="color: #11BCC7;" href="<?php echo e(url('/')); ?>"> <img src="<?php echo e(asset('img/')); ?>/logo.png" width="20%" alt=""> <b>Woka</b></a>
+		</div>
+	</nav>
+ <?php echo $__env->yieldContent('progress'); ?>
 <div class="container mt-5">
 
-	<div class="row">
-
+		<div class="row">
 
 	<?php echo $__env->yieldContent('container'); ?>
 
 	<div class="footer">
-		<p>Woka @ 2021, PT. Woka.</p>
+		<p>
+			<img src="<?php echo e(asset('img/')); ?>/logofooter.png" width="25px" alt="">
+			Woka &emsp;&emsp;
+			@ 2021, PT. Woka.
+		</p>
 	</div>
 </div>
 

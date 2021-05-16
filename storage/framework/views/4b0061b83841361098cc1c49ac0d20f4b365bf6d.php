@@ -10,18 +10,6 @@
         <?php echo csrf_field(); ?>
 			<div class="row mt-4">
 				<div class="col-lg col-sm-12">
-					<h6> <b> Kata Sandi </b> </h6>
-				</div>
-				<div class="col-lg col-sm-12">
-					<input type="text" class="form-control" placeholder="Masukan Kata Sandi" name="password">
-				</div>
-				<div class="col-lg col-sm-12">
-					<input type="text" class="form-control" placeholder="Konfirmasi Kata Sandi" name="passwordConfirm">
-				</div>
-			</div>
-
-			<div class="row mt-4">
-				<div class="col-lg col-sm-12">
 					<h6> <b> Pertanyaan Keamanan </b> </h6>
 				</div>
 				<div class="col-lg col-sm-12">

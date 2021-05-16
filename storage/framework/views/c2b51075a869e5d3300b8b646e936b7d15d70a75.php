@@ -31,7 +31,7 @@
 						<a class="nav-link" href="<?php echo e(url('/gabung')); ?>">Gabung Mitra</a>
 					</li>
 					<li class="nav-item pe-5">
-						<a class="nav-link" data-bs-toggle="modal" formaction="#" data-bs-target="#exampleModal1" href="<?php echo e(url('/gabung')); ?>">Masuk</a>
+						<a class="nav-link" data-bs-toggle="modal" formaction="<?php echo e(url('/profil')); ?>" data-bs-target="#exampleModal1" href="">Masuk</a>
 					</li>
 				</ul>
 
@@ -41,27 +41,69 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-body">
-								<form method="post" action="<?php echo e(url('/')); ?>">
+								<form method="post" action="<?php echo e(route('login')); ?>">
 								<?php echo csrf_field(); ?>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									<h2 class="headT mb-4">Masuk</h2>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="text" class="form-control" placeholder="Email/Nama Pengguna"/>
+										<!-- <input type="text" class="form-control" placeholder="Email" name="email" /> -->
+										<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.input','data' => ['id' => 'email','class' => 'form-control block mt-1 w-full','type' => 'email','name' => 'email','value' => old('email'),'required' => true,'autofocus' => true,'placeholder' => 'Email']]); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['id' => 'email','class' => 'form-control block mt-1 w-full','type' => 'email','name' => 'email','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(old('email')),'required' => true,'autofocus' => true,'placeholder' => 'Email']); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
 									</div>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="password" class="form-control" placeholder="Kata Sandi"/>
+										<!-- <input type="password" class="form-control" placeholder="Kata Sandi" name="password" /> -->
+										<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.input','data' => ['id' => 'password','class' => 'form-control block mt-1 w-full','type' => 'password','name' => 'password','required' => true,'autocomplete' => 'current-password','placeholder' => 'Kata Sandi']]); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['id' => 'password','class' => 'form-control block mt-1 w-full','type' => 'password','name' => 'password','required' => true,'autocomplete' => 'current-password','placeholder' => 'Kata Sandi']); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
 									</div>
 									<div class="form-outline pe-5 ps-5">
-										<button type="submit" class="btn mb-4 btn-gabung">Lanjut</button>
-										<input type="checkbox" name="" id=""> Ingat Saya
-										<a href="#" class="float-end">Lupa Kata Sandi?</a>
+										<!-- <button type="submit" class="btn mb-4 btn-gabung">Lanjut</button> -->
+										<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.button','data' => ['class' => 'ml-3 btn mb-4 btn-gabung']]); ?>
+<?php $component->withName('button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['class' => 'ml-3 btn mb-4 btn-gabung']); ?>
+											<?php echo e(__('Lanjut')); ?>
+
+										 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+										
+										<!-- Remember Me -->
+										<input type="checkbox" name="remember" id="remember_me"> Ingat Saya </input>
+										<?php if(Route::has('password.request')): ?>
+											<a href="<?php echo e(route('password.request')); ?>" class="float-end">Lupa Kata Sandi?</a>
+										<?php endif; ?>
 									</div>
 								</form>
 							</div>
 
-							<div class="modal-footer mx-auto">
-								<p>Belum Bergabung? <a href="#">Daftar</a></p>
-							</div>
+							<!-- <div class="modal-footer mx-auto">
+								<p>Belum Bergabung? <a class="" data-bs-toggle="modal" formaction="<?php echo e(url('/profil')); ?>" data-bs-target="#exampleModal" href="">Daftar</a></p>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -71,17 +113,83 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-body">
-								<form>
+								<!-- Validation Errors -->
+								<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.auth-validation-errors','data' => ['class' => 'mb-4','errors' => $errors]]); ?>
+<?php $component->withName('auth-validation-errors'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['class' => 'mb-4','errors' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors)]); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+
+								<form method="post" action="<?php echo e(route('register')); ?>">
+									<?php echo csrf_field(); ?>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									<h2 class="headT mb-4">Daftar</h2>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="email" class="form-control" placeholder="Email"/>
+										<!-- <input type="email" class="form-control" placeholder="Email" name="email" /> -->
+										<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.input','data' => ['id' => 'name','class' => 'form-control block mt-1 w-full','type' => 'text','name' => 'name','value' => old('name'),'required' => true,'autofocus' => true,'placeholder' => 'Nama Lengkap']]); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['id' => 'name','class' => 'form-control block mt-1 w-full','type' => 'text','name' => 'name','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(old('name')),'required' => true,'autofocus' => true,'placeholder' => 'Nama Lengkap']); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
 									</div>
 									<div class="form-outline mb-4 pe-5 ps-5">
-										<input type="text" class="form-control" placeholder="Nama Pengguna"/>
+										<!-- <input type="email" class="form-control" placeholder="Email" name="email" /> -->
+										<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.input','data' => ['id' => 'email','class' => 'form-control block mt-1 w-full','type' => 'email','name' => 'email','value' => old('email'),'required' => true,'placeholder' => 'Email']]); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['id' => 'email','class' => 'form-control block mt-1 w-full','type' => 'email','name' => 'email','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(old('email')),'required' => true,'placeholder' => 'Email']); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+									</div>
+									<div class="form-outline mb-4 pe-5 ps-5">
+										<!-- <input type="password" class="form-control" placeholder="Kata Sandi" name="password" /> -->
+										<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.input','data' => ['id' => 'password','class' => ' form-control block mt-1 w-full','type' => 'password','name' => 'password','required' => true,'autocomplete' => 'new-password','placeholder' => 'Kata Sandi']]); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['id' => 'password','class' => ' form-control block mt-1 w-full','type' => 'password','name' => 'password','required' => true,'autocomplete' => 'new-password','placeholder' => 'Kata Sandi']); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
 									</div>
 									<div class="form-outline mb-2 pe-5 ps-5">
-										<input type="password" class="form-control" placeholder="Kata Sandi"/>
+										<!-- <input type="password" class="form-control" placeholder="Konfirmasi Kata Sandi" name="confirmPassword" /> -->
+										<?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.input','data' => ['id' => 'password_confirmation','class' => 'form-control block mt-1 w-full','type' => 'password','name' => 'password_confirmation','required' => true,'placeholder' => 'Konfirmasi Kata Sandi']]); ?>
+<?php $component->withName('input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['id' => 'password_confirmation','class' => 'form-control block mt-1 w-full','type' => 'password','name' => 'password_confirmation','required' => true,'placeholder' => 'Konfirmasi Kata Sandi']); ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
 									</div>
 									<div class="form-outline mb-4 pe-5 ps-5">
 										<p class="mb-4" style="font-size: 13px;">8 karakter atau lebih. Kombinasi huruf besar dan kecil dan angka.</p>
@@ -91,9 +199,9 @@
 								</form>
 							</div>
 
-							<div class="modal-footer mx-auto">
-								<p>Sudah Bergabung? <a href="#">Masuk</a></p>
-							</div>
+							<!-- <div class="modal-footer mx-auto">
+								<p>Sudah Bergabung? <a class="" data-bs-toggle="modal" formaction="<?php echo e(url('/profil')); ?>" data-bs-target="#exampleModal1" href="">Masuk</a></p>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -102,15 +210,16 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg col-sm-12">
+			<div class="col-lg col-sm-12 hide">
 				<img src="<?php echo e(asset('img/')); ?>/woka1.png" alt="" width="82%">
 			</div>
 			<div class="col-lg col-sm-12" style="margin-top: 15%;">
 				<div class="card">
 					<div class="card-body">
-						<form action="">
-							<input type="text" class="search-box" placeholder="Temukan Jasa" name="" id="">
-							<button class="find-btn" type="submit">Cari Jasa</button>
+						<form action="<?php echo e(url('/search')); ?>">
+						<?php echo csrf_field(); ?>
+							<input type="text" class="search-box" placeholder="Temukan Jasa" name="namaJasa" id="namaJasa">
+							<button class="btn btn-primary" type="submit">Cari Jasa</button>
 						</form>
 				  	</div>
 				</div>
@@ -121,7 +230,11 @@
 	</div>
 
 	<div class="footer fixed-bottom">
-		<p>Woka @ 2021, PT. Woka.</p>
+		<p>
+			<img src="<?php echo e(asset('img/')); ?>/logofooter.png" width="25px" alt="">
+			Woka &emsp;&emsp;
+			@ 2021, PT. Woka.
+		</p>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

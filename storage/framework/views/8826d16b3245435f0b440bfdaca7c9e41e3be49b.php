@@ -2,10 +2,10 @@
 
 <?php $__env->startSection('container'); ?>
 <h3> <b> <?php echo e($header); ?> </b> </h3>
-<p>Beritahu calon pelanggan tentang diri anda. Informasi ini akan <br>
-		kami tampilkan di halaman profil anda sebagai penyedia jasa.</p>
+
+	<p>Beritahu calon pelanggan tentang diri anda. Informasi ini akan <br>
+	kami tampilkan di halaman profil anda sebagai penyedia jasa.</p>
 </div>
-<?php echo e(__('Gabung')); ?>
 
 <div class="row mt-4 bottom form-set">
 		<form method="post" action="<?php echo e(url('/gabung/2')); ?>">

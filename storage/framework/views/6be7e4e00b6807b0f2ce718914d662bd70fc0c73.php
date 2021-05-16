@@ -22,5 +22,5 @@
 	<div class="row top bottom">
 		<a class="btn btn-home flex" href="<?php echo e(url('/profil')); ?>">Halaman Profil</a>
 	</div>
-    <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layout/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\woka-app - Copy\resources\views/gabung/4.blade.php ENDPATH**/ ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout/main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\woka-app - Copy\resources\views/gabung/done.blade.php ENDPATH**/ ?>
