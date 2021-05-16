@@ -7,6 +7,10 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Middleware\EnsureUserType;
+use App\Http\Resources\ServiceResource;
+use App\Http\Resources\ServiceCollection;
+use App\Models\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,34 +30,86 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::any('/search', function () {
+    return view('search.index');
+});
 
-Route::get('/gabung', function () {
-    return view('gabung.1', ['header' => 'Informasi Pribadi']);
-})->middleware(['auth'])->name('gabung');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::get('/jelajahi', function () {
     return view('jelajahi');
 });
 
-Route::any('/gabung/2', function () {
-    return view('gabung.2', ['header' => 'Informasi Keahlian']);
-})->middleware(['auth'])->name('gabung');
+// <================= WORKER BARU =================>
+Route::get('/gabung', [WorkersController::class, 'create'])->middleware('auth')->name('gabung');
 
-Route::any('/gabung/3', function () {
-    return view('gabung.3', ['header' => 'Keamanan Akun']);
-})->middleware(['auth'])->name('gabung');
+Route::post('/gabung', [WorkersController::class, 'store'])->middleware('auth');
 
-Route::any('/gabung/4', function () {
-    return view('gabung.4');
+Route::get('/gabung/craftsmanship', [WorkersController::class, 'createKeahlian'])->middleware('auth')->name('keahlian');
+
+Route::post('/gabung/craftsmanship', [WorkersController::class, 'storeKeahlian'])->middleware('auth');
+
+Route::get('/gabung/security', [WorkersController::class, 'createKeamanan'])->middleware('auth')->name('keamanan');
+
+Route::post('/gabung/security', [WorkersController::class, 'storeKeamanan'])->middleware('auth');
+
+
+// <================= JASA BARU =================>
+Route::get('/new', [ServicesController::class, 'create'])->middleware(['auth',EnsureUserType::class])->name('new');
+
+Route::post('/new', [ServicesController::class, 'store'])->middleware(['auth']);
+
+Route::get('/new/pricing', [ServicesController::class, 'createPricing'])->middleware(['auth'])->name('new');
+
+Route::post('/new/pricing', [ServicesController::class, 'storePricing'])->middleware(['auth']);
+
+Route::get('/new/description', [ServicesController::class, 'createDesc'])->middleware(['auth'])->name('new');
+
+Route::post('/new/description', [ServicesController::class, 'storeDesc'])->middleware(['auth']);
+
+Route::get('/new/gallery', [ServicesController::class, 'createGallery'])->middleware(['auth'])->name('new');
+
+Route::post('/new/gallery', [ServicesController::class, 'storeGallery'])->middleware(['auth']);
+
+Route::any('/new/done', function () {
+    return view('new.done');
 });
 
-Route::resource('workers',WorkersController::class);
-Route::resource('orders',OrdersController::class);
-Route::resource('admins',AdminsController::class);
-Route::resource('services',ServicesController::class);
-Route::resource('customers',CustomersController::class);
+Route::get('/profil', [PagesController::class, 'profil'])->middleware(['auth']);
+
+Route::get('/pesanan', [PagesController::class, 'pesanan'])->middleware(['auth']);
+
+Route::get('/profil/worker', [PagesController::class, 'profilWorker']);
+
+
+// <================= PESANAN BARU =================>
+Route::get('/order', [OrdersController::class, 'index'])->middleware(['auth']);
+
+Route::post('/order', [OrdersController::class, 'store'])->middleware(['auth']);
+
+Route::get('/order/bayar', [OrdersController::class, 'bayar'])->middleware(['auth']);
+
+Route::post('/order/bayar', [OrdersController::class, 'bayarStore'])->middleware(['auth']);
+
+Route::get('/order/done', [OrdersController::class, 'done'])->middleware(['auth']);
+
+// Route::get('/service', function () {
+//     return ServiceResource::collection(Service::all());
+// });
+
+Route::get('/services', function () {
+    return new ServiceCollection(Service::all());
+});
+
+Route::get('/services/{id}', function ($id) {
+    return new ServiceResource(Service::findOrFail($id));
+});
 
 require __DIR__.'/auth.php';
+
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
+//     Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
+// });
