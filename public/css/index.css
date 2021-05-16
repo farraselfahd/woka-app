@@ -47,6 +47,7 @@ a {
 }
 
 .footer {
+    padding-top: 10px;
     text-align: center !important;
     color: #979797;
     width: 100%;
@@ -66,10 +67,15 @@ a {
     text-align: center !important;
 }
 
-/* @media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
 
-    .da {
-        flex-direction: column-reverse;
+    .hide {
+        display: none;
+    }
+    .slogan {
+        font-weight: 600;
+        font-size: 40px;
     }
 
- } */
+}
+

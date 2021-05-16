@@ -1,0 +1,86 @@
+body {
+
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    color: #000000;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-clr {
+    background-color: white !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.top {
+    margin-top: 10%;
+}
+
+.bottom {
+    margin-bottom: 10%;
+}
+
+.border {
+    border: 5px solid palevioletred;
+}
+
+.footer {
+    text-align: center !important;
+    color: #979797;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    background-color: white;
+}
+
+.flex{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+.btn-pesan {
+    background-color: #7784EE;
+    color: white;
+}
+
+.card {
+    box-shadow: 1px 1px 8px 1px rgba(90, 90, 90, 0.75);
+}
+
+.box {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-color: #dad9d9;
+    width: 100%;
+    padding: 2% 2% 2% 2%;
+    display: none;
+    margin: 0 auto;
+}
+
+.success-box {
+    background-color: #DCF3EB;
+    width: 500px;
+    color: #10673E;
+    padding: 5%;
+    border: 0.5px solid #34A770;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 700px) {
+    .success-box {
+        width: 90%;
+    }
+
+    h5 {
+        text-align: center;
+    }
+
+    textarea {
+        width: 100%;
+    }
+} 
