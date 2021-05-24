@@ -113,3 +113,7 @@ require __DIR__.'/auth.php';
 //     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
 //     Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
 // });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
