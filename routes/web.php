@@ -7,10 +7,13 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\Voyager\PostController;
 use App\Http\Middleware\EnsureUserType;
 use App\Http\Resources\ServiceResource;
 use App\Http\Resources\ServiceCollection;
 use App\Models\Service;
+use TCG\Voyager\Facades\Voyager;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,7 @@ use App\Models\Service;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('index');
 });
@@ -57,7 +61,7 @@ Route::post('/gabung/security', [WorkersController::class, 'storeKeamanan'])->mi
 
 
 // <================= JASA BARU =================>
-Route::get('/new', [ServicesController::class, 'create'])->middleware(['auth',EnsureUserType::class])->name('new');
+Route::get('/new', [ServicesController::class, 'create'])->middleware(['auth', EnsureUserType::class])->name('new');
 
 Route::post('/new', [ServicesController::class, 'store'])->middleware(['auth']);
 
@@ -107,13 +111,16 @@ Route::get('/services/{id}', function ($id) {
     return new ServiceResource(Service::findOrFail($id));
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Route::group(['middleware' => ['auth']], function () {
 //     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
 //     Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
 // });
 
+// <================= ADMIN PANEL =================>
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    Route::get('services/verify', [VerifyController::class, 'verify'])->name('services.verify');
 });
